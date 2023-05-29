@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+        <title>Product Creation</title>
+    </head>
+    <body>
+        <header>
+            <h1>Product Edition</h1>
+        </header>
+        <div layout:fragment="content">
+        <main class="container mt-5">
+            <h1>Product Edition</h1>
+            <form th:action="@{/updateProduct}" method="post">
+                <div class="mb-3 w-25">
+                    <label for="idProduct" class="form-label">Product Id</label>
+                    <input type="text" class="form-control" id="idProduct" name="idProduct"
+                           th:value="${productJsp.idProduct}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="nameProduct" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="nameProduct" name="nameProduct"
+                           th:value="${productJsp.nameProduct}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="priceProduct" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="priceProduct" name="priceProduct"
+                           th:value="${productJsp.priceProduct}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="dateCreate" class="form-label">Creation Date</label>
+                    <input type="date" class="form-control" id="dateCreate" name="dateCreate" value="${now}"
+                           th:value="${productJsp.dateCreate}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="fat" class="form-label">Fat</label>
+                    <input type="text" class="form-control" id="fat" name="fat"
+                           th:value="${productJsp.fat}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="calories" class="form-label">Calories</label>
+                    <input type="text" class="form-control" id="calories" name="calories"
+                           th:value="${productJsp.calories}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="protein" class="form-label">Protein</label>
+                    <input type="text" class="form-control" id="protein" name="protein"
+                           th:value="${productJsp.protein}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="carbs" class="form-label">Carbs</label>
+                    <input type="text" class="form-control" id="carbs" name="carbs"
+                           th:value="${productJsp.carbs}">
+                </div>
+                <div class="mb-3 w-25">
+                    <input type="file" name="sphoto" id="sphoto" accept="image/*" class="form-control-file"
+                           th:value="${productJsp.sphoto}">
+                </div>
+                <button type="submit" value="update" class="btn btn-outline-success">Create</button>
+                <a class="btn btn-outline-primary" href="productsList">Products List</a>
+            </form>
+        </main>
+            <div class="mb-5"></div>
+        </div>
+
+    </body>
+</html>

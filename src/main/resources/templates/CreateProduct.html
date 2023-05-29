@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+        <title>Product Creation</title>
+        <style>
+            body{
+                background-image: url("/images/background.jpg");
+                position:relative;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+    <div layout:fragment="content">
+        <main class="container mt-5">
+            <h1>Product Creation</h1>
+            <form th:action="@{/saveProduct}" method="post">
+                <div class="mb-3 w-25">
+                    <label for="nameProduct" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="nameProduct" name="nameProduct">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="priceProduct" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="priceProduct" name="priceProduct">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="dateCreate" class="form-label">Creation Date</label>
+                    <input type="date" class="form-control" id="dateCreate" name="dateCreate" value="${now}">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="fat" class="form-label">Fat</label>
+                    <input type="text" class="form-control" id="fat" name="fat">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="calories" class="form-label">Calories</label>
+                    <input type="text" class="form-control" id="calories" name="calories">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="protein" class="form-label">Protein</label>
+                    <input type="text" class="form-control" id="protein" name="protein">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="carbs" class="form-label">Carbs</label>
+                    <input type="text" class="form-control" id="carbs" name="carbs">
+                </div>
+                <div class="mb-3 w-25">
+                    <input type="file" name="sphoto" id="sphoto" accept="image/*" class="form-control-file">
+                </div>
+                <button type="submit" value="add" class="btn btn-outline-success">Create</button>
+                <a class="btn btn-outline-primary" href="productsList">Products List</a>
+                </form>
+        </main>
+        <div class="mb-5"></div>
+    </div>
+    </body>
+</html>
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css">
+    <title>Products List</title>
+</head>
+<body>
+<div layout:fragment="content">
+<main class="container mt-5">
+    <a class="btn btn-outline-success" th:href="@{/createProduct}">New Product</a>
+    <table class="table table-hover">
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Price (DH)</th>
+            <th>Create Date</th>
+            <th>Fat (g)</th>
+            <th>Calories (kcal)</th>
+            <th>Protein (g)</th>
+            <th>Carbs (g)</th>
+            <th>Image</th>
+        </tr>
+        <tr th:each="product:${productsJsp.content}">
+            <td th:text="${product.idProduct}"></td>
+            <td th:text="${product.nameProduct}"></td>
+            <td th:text="${product.priceProduct}"></td>
+            <td th:text="${product.dateCreate}"></td>
+            <td th:text="${product.fat} "></td>
+            <td th:text="${product.calories}"></td>
+            <td th:text="${product.protein}"></td>
+            <td th:text="${product.carbs}"></td>
+            <a><td th:text="${product.sphoto}"></td></a>
+            <td>
+                <a class="btn btn-outline-danger" onClick="return confirm('Are you sure to delete this item?')" th:href="@{/deleteProduct(id=${product.idProduct})}" ,page=${currentPage}, size=${size}><i class="bi bi-trash"></i></a>
+            </td>
+            <td>
+                <a class="btn btn-outline-warning" th:href="@{/showProduct(id=${product.idProduct})}"><i class="bi bi-pencil"></i></a>
+            </td>
+        </tr>
+    </table>
+    <ul class="nav nav-pills">
+        <li th:each="page,status:${pages}">
+            <a th:class="${status.index==currentPage?'btn btn-primary':'btn'}" th:href="@{productsList(page=${status.index}, size=${size})}" th:text="${status.index}"></a>
+        </li>
+    </ul>
+</main>
+</div>
+</body>
+</html>
